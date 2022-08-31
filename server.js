@@ -10,7 +10,7 @@ const connectDB = require('./config/db');
 
 // Auth Router
 const sign_in = require('./src/routes/auth_route')
-
+const membership = require('./src/routes/membership_route')
 const port = 3500
 
 app.use(cors());
@@ -20,6 +20,7 @@ app.get('/' , (req, res)=>{
 })
 
 app.use('/api/v1/auth' , sign_in)
+app.use('/api/v1/membership',membership)
 
 connectDB()
 

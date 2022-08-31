@@ -24,10 +24,10 @@ const sign_up = express_async_handler(async (req, res) => {
   const userFound = await User.findOne({ email: email });
 
   if (userFound) {
-    res.send("Error, User find  !");
+    res.send("Error, User exist wit this email!");
   }
   const securedPassword = bcrypt.hashSync(password, 10);
-
+  // User.index({ "loc": "2dsphere" });
   const user = await User.create({
     name: full_name,
     email: email,
@@ -37,7 +37,7 @@ const sign_up = express_async_handler(async (req, res) => {
     gender: gender,
     tell: tell,
     city:city,
-    user_location:user_location
+    location:{ type: "Point", coordinates: [31.515054, 74.302857 ] },
   });
 
   if (user) {
@@ -49,7 +49,7 @@ const sign_up = express_async_handler(async (req, res) => {
       blood_group:user.blood_group,
       gender: user.gender,
       tell: user.tell,
-      location:user.user_location,
+      location:user.location,
       city:user.city,
       token: genrateToken(user._id)
      
@@ -96,7 +96,7 @@ const allUser = express_async_handler(async (req, res) => {
   //     }
   //   : {};
 
-  const users = await User.find({});
+  const users = await User.find()
   res.send(users);
 });
 
