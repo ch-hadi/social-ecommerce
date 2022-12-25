@@ -1,6 +1,5 @@
 const express_async_handler = require("express-async-handler");
 const Post = require("./../schemas/Post");
-const genrateToken = require("./../utils/Token");
 
 const create_post = express_async_handler(async (req, res) => {
     // console.log('res->',req.body)
