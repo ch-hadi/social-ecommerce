@@ -9,18 +9,16 @@ require('dotenv').config()
 const connectDB = require('./config/db');
 
 // Auth Router
-const sign_in = require('./src/routes/auth_route')
-const membership = require('./src/routes/membership_route')
+const routes = require('./src/routes/all_routes')
 const port = 3500
-
 app.use(cors());
 
 app.get('/' , (req, res)=>{
-    res.send('Welcome to Blood')
+    res.send('Welcome to LinkedIn Server')
 })
 
-app.use('/api/v1/auth' , sign_in)
-app.use('/api/v1/membership',membership)
+app.use('/api/v1/' , routes)
+
 
 connectDB()
 

@@ -17,8 +17,8 @@ const sign_up = express_async_handler(async (req, res) => {
 
   if (!full_name || !email || !password || !username || !blood_group || !gender , !tell, !city) {
     console.log("error");
-    res.send({ Error: "All fields are Requier.." });
-    throw new Error("All fields are Requier..");
+    res.send({ Error: "All fields are Required.." });
+    throw new Error("All fields are Required..");
   }
 
   const userFound = await User.findOne({ email: email });
