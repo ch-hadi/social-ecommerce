@@ -6,7 +6,7 @@ const validateUserInput = [
     .isLength({ min: 5, max: 50 })
     .withMessage('Email should be between 5 and 50 characters.'),
   check('password')
-    .isLength({ min: 4, max: 20 })
+    .isLength({ min: 3, max: 20 })
     .withMessage('Password should be between 6 and 20 characters.'),
 ];
 
